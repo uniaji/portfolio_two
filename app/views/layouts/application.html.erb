@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Portfolio</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<%= csrf_meta_tags %>
+		<%= csp_meta_tag %>
+		<%= stylesheet_link_tag 'application' %>
+		<!-- <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> -->
+		<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Urbanist&display=swap" rel="stylesheet" />
+	</head>
+
+	<body>
+		<div class="header">
+			<div class="header-logo">
+				<div class="text">
+					<p>Find me in app/views/layout/application.html.erb</p>
+				</div>
+				<div class="title">
+					<h1><%= link_to 'Portfolio', root_path %></h1>
+				</div>
+			</div>
+			<nav class="header-nav">
+				<ul class="header-list">
+					<% if user_signed_in? %>
+						<li><%= link_to current_user.username, user_path(current_user) %><span class="header-name"> さんでログイン中です</span></li>
+						<li><%= link_to 'ユーザー一覧', users_path %></li>
+						<li><%= link_to '投稿一覧', posts_path %></li>
+						<li><%= link_to '新規投稿', new_post_path %></li>
+						<li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+					<% else %>
+						<li><%= link_to '新規ユーザー登録', new_user_registration_path %></li>
+						<li><%= link_to 'ログイン', new_user_session_path %></li>
+					<% end %>
+				</ul>
+			</nav>
+		</div>
+		<div class="flash">
+			<% flash.each do |key, value| %>
+				<%= content_tag(:div, value, class: "#{key}") %>
+			<% end %>
+			<%
+=begin%>
+ <p class="notice"><%= notice %></p>
+			<p class="alert"><%= alert %></p>
+<%
+=end%>
+		</div>
+		<%= yield %>
+	</body>
+</html>

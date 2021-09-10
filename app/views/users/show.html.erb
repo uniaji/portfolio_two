@@ -1,0 +1,41 @@
+<div class="cmn users-show">
+	<div class="container">
+		<p>Find me in app/views/users/show.html.erb</p>
+		<div class="profile">
+			<h2 class="cmn-title"><%= @user.username %> さんのページ</h2>
+			<div class="img-icon">
+				<%= form_for(@user) do |f| %>
+				<% if @user.image? %>
+					<%= image_tag @user.image.url %>
+				<% else %>
+					<%= image_tag "/assets/default.jpg", :size => '250x250' %>
+				<% end %>
+					<button type="button" class="btn btn-outline-secondary rounded-pill">
+						<%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
+					</button>
+					<%= f.submit '更新する', class: 'btn btn-primary' %>
+				<% end %>
+			</div>
+			<div class="description">
+				<h3 class="title">名前</h3>
+				<div class="content">
+					<%= @user.username %>
+				</div>
+				<h3 class="title">メールアドレス</h3>
+				<div class="content">
+					<%= @user.email %>
+				</div>
+				<h3 class="profile">プロフィール</h3>
+				<div class="content">
+					<%= @user.profile %>
+				</div>
+			</div>
+			<div class="link">
+				<% if @user.id == current_user.id %>
+					<%= link_to '●ユーザー情報の編集', edit_user_registration_path(current_user) %>
+				<% end %>
+			</div>
+			<div class="posts-list"></div>
+		</div>
+	</div>
+</div>

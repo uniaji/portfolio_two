@@ -1,0 +1,30 @@
+<div class="cmn-index posts-index">
+    <p>Find me in app/views/posts/index.html.erb</p>
+    <h2 class="cmn-title">投稿一覧</h2>
+    <table class="table">
+        <div class="thead-title">
+            <thead>
+                <tr>
+                    <th>投稿者</th>
+                    <th>タイトル</th>
+                    <th>内容</th>
+                </tr>
+            </thead>
+        </div>
+        <div class="thead-content">
+            <tbody>
+                <% @posts.each do |post| %>
+                    <% if post.present? %>
+                        <tr>
+                            <th><%= link_to post.user.username, user_path(post.user_id) %></th>
+                            <th><%= link_to post.title, post_path(post.id) %></th>
+                            <th><%= link_to post.content, post_path(post.id) %></th>
+                        </tr>
+                    <% else %>
+                        <P>投稿はありません</p>
+                    <% end %>
+                <% end %>
+            </tbody>
+        </div>
+    </table>
+</div>

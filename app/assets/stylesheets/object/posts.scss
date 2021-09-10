@@ -1,0 +1,45 @@
+.posts-index {
+	.table {
+		border-collapse: collapse;
+
+		.thead-title {
+			font-size: 20px;
+		}
+
+		th,
+		td {
+			border: solid 2px; /* 枠線指定 */
+			border-color: lightgrey;
+			padding: 10px; /* 余白指定 */
+		}
+	}
+}
+
+.posts-show {
+	.content {
+		margin-bottom: 10px;
+	}
+
+	.comment-show {
+		padding-top: 10px;
+
+		.comment-table {
+			border-collapse: collapse;
+
+			.thead-title {
+				font-size: 20px;
+			}
+
+			th,
+			td {
+				border: solid 2px; /* 枠線指定 */
+				border-color: lightgrey;
+				padding: 10px; /* 余白指定 */
+			}
+		}
+
+		.comment-form {
+			padding-top: 10px;
+		}
+	}
+}

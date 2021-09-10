@@ -1,0 +1,40 @@
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: grey;
+
+	.header-logo {
+		display: block;
+		margin-right: auto;
+		.title {
+			padding-left: 50px;
+
+			h1 {
+				font-family: "Urbanist", sans-serif;
+				font-size: 40px;
+			}
+		}
+	}
+	.header-nav {
+		margin-left: auto;
+		padding-right: 50px;
+		li {
+			font-family: "Urbanist", sans-serif;
+			display: inline-block;
+			text-align: center;
+			padding-left: 20px;
+		}
+		a:hover {
+			opacity: 0.5;
+		}
+		.header-name {
+			font-size: 12px;
+		}
+	}
+}
+
+.flash {
+	text-align: center;
+	background-color: lemonchiffon;
+}

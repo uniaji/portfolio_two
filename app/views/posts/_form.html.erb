@@ -1,0 +1,15 @@
+<div class="posts-form">
+    <%= form_with model: @post, local: true do |f| %>
+        <label class="title">タイトル</label>
+        <div class="content cmn-textarea">
+            <%= f.text_field :title, class: "form-control" %>
+        </div>
+        <label class="title">内容</label>
+        <div class="content cmn-textarea">
+            <%= f.text_area :content, class: "form-control" %>
+        </div>
+        <div class="btn btn-posts">
+            <%= f.submit "投稿する", class: "btn btn-posts-edit" %>
+        </div>
+    <% end %>
+</div>
