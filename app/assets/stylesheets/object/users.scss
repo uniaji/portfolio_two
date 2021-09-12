@@ -9,3 +9,16 @@
 		}
 	}
 }
+
+.users-show {
+	.thead-title {
+		font-size: 20px;
+	}
+
+	th,
+	td {
+		border: solid 2px; /* 枠線指定 */
+		border-color: lightgrey;
+		padding: 10px; /* 余白指定 */
+	}
+}
