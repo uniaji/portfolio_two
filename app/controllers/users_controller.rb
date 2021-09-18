@@ -5,8 +5,13 @@ class UsersController < ApplicationController
     @users = User.all.order(id: :asc)
   end
 
+  def posts
+    posts.find(id: self.id)
+  end
+
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts
   end
 
   private

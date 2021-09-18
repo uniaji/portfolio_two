@@ -1,4 +1,4 @@
-<div class="cmn">
+<div class="cmn user-edit">
 	<p>Find me in app/views/registrations/edit.html.erb</p>
 	<h2 class="cmn-title"><%= @current_user.username %> さんの編集ページ</h2>
 
@@ -6,22 +6,22 @@
 		<%= render "devise/shared/error_messages", resource: resource %>
 
 		<div class="field">
-			<%= f.label :image %><br />
+			■<%= f.label :image %><br />
 			<%= f.file_field :image %>
 		</div>
 
 		<div class="field">
-			<%= f.label :username %><br />
+			■<%= f.label :username %><br />
 			<%= f.text_field :username, autofocus: true %>
 		</div>
 
 		<div class="field">
-			<%= f.label :email %><br />
+			■<%= f.label :email %><br />
 			<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
 		</div>
 
 		<div class="field">
-			<%= f.label :profile %><br />
+			■<%= f.label :profile %><br />
 			<%= f.text_field :profile, autofocus: true, autocomplete: "profile" %>
 		</div>
 
@@ -30,31 +30,34 @@
 		<% end %>
 
 		<div class="field">
-			<%= f.label :password %> <p>(変更しない場合は空欄にして下さい)</p>
+			■<%= f.label :password %>
+			<p class="pass-desc">※ 変更しない場合は空欄にして下さい</p>
 			<%= f.password_field :password, autocomplete: "new-password" %>
 			<% if @minimum_password_length %>
 				<br />
-				<em><%= @minimum_password_length %> 文字以上です</em>
+				<em><p class="pass-desc"><%= @minimum_password_length %>文字以上です</p></em>
 			<% end %>
 		</div>
 
 		<div class="field">
-			<%= f.label :password_confirmation %><br />
+			□<%= f.label :password_confirmation %><br />
 			<%= f.password_field :password_confirmation, autocomplete: "new-password" %>
 		</div>
 
 		<div class="field">
-			<%= f.label :current_password %> <i>(変更箇所がある場合は、現在のパスワードを入力して下さい)</i><br />
+			■<%= f.label :current_password %>
+			<p class="pass-desc">※変更箇所がある場合は、現在のパスワードを入力して下さい</p>
 			<%= f.password_field :current_password, autocomplete: "current-password" %>
 		</div>
 
-		<div class="actions">
-			<%= button_to "情報を更新する", user_registration_path %>
+		<div class="btn">
+			<%= button_to "情報を更新する", user_registration_path, class: "btn" %>
 		</div>
 	<% end %>
 	<br>
 	<h3>ユーザー削除</h3>
-	<p>削除しますか? <%= button_to "削除する！", user_registration_path(@user.id), method: :delete, data:{ confirm: '本当に削除しますか？' } %></p>
+	<p>削除しますか?</p>
+	<%= button_to "削除する！", user_registration_path(@user.id), method: :delete, data:{ confirm: '本当に削除しますか？' }, class: "btn" %></p>
 	<div class="link">
 		<%= link_to "●前のページへ戻る", :back %>
 	</div>

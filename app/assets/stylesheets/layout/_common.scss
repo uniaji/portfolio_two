@@ -1,14 +1,50 @@
-.cmn-index {
-	margin-left: 70px;
+body {
+	background-color: #e5f2ff;
+	margin-top: 70px;
+	// padding-top: 15px;
+	@include overTab {
+		background-color: #ffe5e5;
+		margin-top: 85px;
+		padding-top: 0;
+	}
+	padding-bottom: 10px;
+	input[type="text"] {
+		width: 300px;
+		height: 20px;
+	}
+	input[type="email"] {
+		width: 300px;
+		height: 20px;
+	}
+	input[type="password"] {
+		width: 300px;
+		height: 20px;
+	}
+}
+
+.url {
+	display: none;
+	@include overTab {
+		display: block;
+	}
 }
 
 .cmn {
-	margin-left: 70px;
+	margin: 0 15px;
+	margin-bottom: 20px;
+	@include overTab {
+		margin: 0 70px;
+		margin-bottom: 50px;
+	}
 }
 
 .cmn-title {
 	display: block;
 	margin-bottom: 10px;
+	text-align: center;
+	@include overTab {
+		text-align: start;
+	}
 }
 
 .img-icon {
@@ -24,4 +60,30 @@
 
 .cmn-textarea {
 	width: 100%;
+}
+
+.btn {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 15px;
+	color: #333;
+	font-size: 14px;
+	font-weight: 700;
+	border-radius: 50vh;
+	border: none;
+
+	:after {
+		content: "";
+		width: 5px;
+		height: 5px;
+		border-top: 3px solid #333333;
+		border-right: 3px solid #333333;
+		transform: rotate(45deg);
+	}
+
+	:hover {
+		text-decoration: none;
+		background-color: #bbbbbb;
+	}
 }

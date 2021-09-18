@@ -1,32 +1,21 @@
-<div class="cmn-index user-index">
-	<p>Find me in app/views/users/index.html.erb</p>
+<div class="cmn user-index">
+	<p class="url">Find me in app/views/users/index.html.erb</p>
 	<h2 class="cmn-title">ユーザー一覧</h2>
-    <table class="table">
-        <div class="thead-title">
-            <thead>
-                <tr>
-					<th></th>
-                    <th>ユーザー名</th>
-                    <th>メールアドレス</th>
-                </tr>
-            </thead>
-        </div>
-        <div class="thead-content">
-            <tbody>
-                <% @users.each do |user| %>
-					<tr>
-						<th class="img-icon">
-                            <% if user.image? %>
-                                <%= image_tag user.image.url %>
-                            <% else %>
-                                <%= image_tag "/assets/default.jpg", :size => '250x250' %>
-                            <% end %>
-                        </th>
-						<th><%= link_to user.username, user_path(user.id) %></th>
-						<th><%= link_to user.email, user_path(user.id) %></th>
-					</tr>
-                <% end %>
-            </tbody>
-        </div>
-    </table>
+    <div class="user-list">
+        <% @users.each do |user| %>
+            <div class="item">
+                <div class="img-icon">
+                    <% if user.image? %>
+                        <%= image_tag user.image.url %>
+                    <% else %>
+                        <%= image_tag "/assets/default.jpg", :size => '250x250' %>
+                    <% end %>
+                </div>
+                <div class="content">
+                    <h3 class="name">名前 : <%= link_to user.username, user_path(user.id) %></h3>
+                    <p class="mail">メールアドレス : <%= link_to user.email, user_path(user.id) %></p>
+                </div>
+            </div>
+        <% end %>
+    </div>
 </div>

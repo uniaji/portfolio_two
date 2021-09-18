@@ -1,5 +1,5 @@
 <div class="cmn posts-show">
-    <p>Find me in app/views/posts/show.html.erb</p>
+    <p class="url">Find me in app/views/posts/show.html.erb</p>
     <h2 class="cmn-title"><%= @post.title %></h2>
     <div class="content">
         <div class="img-icon">
@@ -9,10 +9,10 @@
                 <%= image_tag "/assets/default.jpg", :size => '250x250' %>
             <% end %>
         </div>
-        <div>
+        <div class="name">
             投稿者: <%= @post.user.username %>
         </div>
-        <div>
+        <div class="content">
             内容: <%= @post.content %>
         </div>
     </div>
@@ -23,38 +23,30 @@
             <%= link_to "●削除する", post_path(@post), method: :delete, data: {confirm: "本当に削除しますか？"} %>
         <% end %>
     </div>
-    <div class="comment-show">
-        <h3 class="cmn-subtitle">この投稿に対するコメント</h3>
+    <div class="comment">
+        <h3 class="cmn-subtitle">□この投稿に対するコメント</h3>
         <div class="comment-container">
-            <table class="comment-table">
-                <% if @post.comments.any? %>
-                    <thead>
-                        <tr>
-                            <th>コメント</th>
-                            <th>名前</th>
-                            <th>メニュー</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% @post.comments.each do |comment| %>
-                            <tr>
-                                <td><%= comment.content %></td>
-                                <td><%= comment.name %></td>
-                                <td>
-                                    <%= link_to '●コメント編集', edit_post_comment_path(@post, comment) %><br>
-                                    <%= link_to '●コメント削除', post_comment_path(@post, comment), method: :delete, data: {confirm: "本当に削除しますか？"} %>
-                                </td>
-                            </tr>
-                        <% end %>
-                    </tbody>
-                <% else %>
-                    <p>この投稿に対するコメントはありません</p>
-                <% end %>
-            </table>
+            <% if @post.comments.any? %>
+                <div class="item">
+                    <% @post.comments.each do |comment| %>
+                        <div class="name">
+                            <p>名前 : <%= comment.name %></p>
+                        </div>
+                        <div class="desc">
+                            <p>コメント : <%= comment.content %></p>
+                        </div>
+                        <div class="menu">
+                            <%= link_to '●コメント編集', edit_post_comment_path(@post, comment) %>
+                            <%= link_to '●コメント削除', post_comment_path(@post, comment), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+                        </div>
+                    <% end %>
+                </div>
+            <% else %>
+                <p>この投稿に対するコメントはありません</p>
+            <% end %>
         </div>
-
         <div class="comment-form">
-            <h3 class="cmn-subtitle">コメントを投稿する</h3>
+            <h3 class="cmn-subtitle">□コメントを投稿する</h3>
             <%= form_with model: [@post, @comment], local: true do |f| %>
                 <%= f.hidden_field :post_id, { value: @post.id} %>
                 <div class="com-field">
@@ -66,7 +58,7 @@
                 <div class="com-field">
                     <label class="title">コメント</label>
                     <div class="content">
-                        <%= f.text_area :content, class: 'com-form' %>
+                        <%= f.text_area :content, class: 'com-form', size: "60x10"  %>
                     </div>
                 </div>
                 <div class="btn-com">
