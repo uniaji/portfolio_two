@@ -1,16 +1,11 @@
 .posts-index {
-	.table {
-		border-collapse: collapse;
-
-		.thead-title {
-			font-size: 20px;
-		}
-
-		th,
-		td {
-			border: solid 2px; /* 枠線指定 */
-			border-color: lightgrey;
-			padding: 10px; /* 余白指定 */
+	.index {
+		.item {
+			border-bottom: solid 2px #c0c0c0;
+			margin-bottom: 20px;
+			.text {
+				font-weight: bolder;
+			}
 		}
 	}
 }
@@ -18,28 +13,35 @@
 .posts-show {
 	.content {
 		margin-bottom: 10px;
+		.img-icon {
+			margin: auto;
+			@include overTab {
+				margin: 0;
+			}
+		}
+		.name {
+			padding-top: 15px;
+			padding-bottom: 10px;
+		}
 	}
-
-	.comment-show {
-		padding-top: 10px;
-
-		.comment-table {
-			border-collapse: collapse;
-
-			.thead-title {
-				font-size: 20px;
-			}
-
-			th,
-			td {
-				border: solid 2px; /* 枠線指定 */
-				border-color: lightgrey;
-				padding: 10px; /* 余白指定 */
+	.comment {
+		padding-top: 20px;
+		padding-left: 20px;
+		.comment-container {
+			padding-left: 10px;
+			.name {
+				padding-top: 10px;
 			}
 		}
-
 		.comment-form {
-			padding-top: 10px;
+			padding-top: 20px;
 		}
+	}
+}
+
+.posts-form {
+	input[type="text"] {
+		width: 435px;
+		height: 20px;
 	}
 }

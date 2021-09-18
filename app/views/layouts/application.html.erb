@@ -16,39 +16,43 @@
 
 	<body>
 		<div class="header">
-			<div class="header-logo">
-				<div class="text">
-					<p>Find me in app/views/layout/application.html.erb</p>
-				</div>
-				<div class="title">
-					<h1><%= link_to 'Portfolio', root_path %></h1>
+			<div class="header-fixed">
+				<div class="text"><p class="url header-p">Find me in app/views/layout/application.html.erb</p></div>
+				<div class="menu">
+					<div class="header-logo">
+						<div class="title">
+							<h1 class="hp-title"><%= link_to 'Portfolio_two', root_path %></h1>
+						</div>
+					</div>
+					<div class="hamburger-menu">
+						<input type="checkbox" id="menu-btn-check" />
+						<label for="menu-btn-check" class="menu-btn"><span></span></label>
+						<nav class="header-nav">
+							<ul class="header-list">
+								<% if user_signed_in? %>
+									<li>
+										<%= link_to user_path(current_user) do %>
+											<%= current_user.username %><span> さんでログイン中です</span>
+										<% end %>
+									</li>
+									<li><%= link_to 'ユーザー一覧', users_path %></li>
+									<li><%= link_to '投稿一覧', posts_path %></li>
+									<li><%= link_to '新規投稿', new_post_path %></li>
+									<li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+								<% else %>
+									<li><%= link_to '新規ユーザー登録', new_user_registration_path %></li>
+									<li><%= link_to 'ログイン', new_user_session_path %></li>
+								<% end %>
+							</ul>
+						</nav>
+					</div>
 				</div>
 			</div>
-			<nav class="header-nav">
-				<ul class="header-list">
-					<% if user_signed_in? %>
-						<li><%= link_to current_user.username, user_path(current_user) %><span class="header-name"> さんでログイン中です</span></li>
-						<li><%= link_to 'ユーザー一覧', users_path %></li>
-						<li><%= link_to '投稿一覧', posts_path %></li>
-						<li><%= link_to '新規投稿', new_post_path %></li>
-						<li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-					<% else %>
-						<li><%= link_to '新規ユーザー登録', new_user_registration_path %></li>
-						<li><%= link_to 'ログイン', new_user_session_path %></li>
-					<% end %>
-				</ul>
-			</nav>
 		</div>
 		<div class="flash">
 			<% flash.each do |key, value| %>
 				<%= content_tag(:div, value, class: "#{key}") %>
 			<% end %>
-			<%
-=begin%>
- <p class="notice"><%= notice %></p>
-			<p class="alert"><%= alert %></p>
-<%
-=end%>
 		</div>
 		<%= yield %>
 	</body>

@@ -1,35 +1,164 @@
 .header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	background-color: grey;
-
-	.header-logo {
-		display: block;
-		margin-right: auto;
-		.title {
-			padding-left: 50px;
-
-			h1 {
-				font-family: "Urbanist", sans-serif;
-				font-size: 40px;
+	margin-top: 0;
+	.header-fixed {
+		height: 60px;
+		background-color: grey;
+		padding-bottom: 10px;
+		font-family: "Urbanist", sans-serif;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 100;
+		transition: all 0.5s;
+		@include overTab {
+			height: 85px;
+			padding-bottom: 0;
+		}
+		.menu {
+			display: flex;
+			.header-logo {
+				@include overTab {
+					margin-right: auto;
+				}
+				.title {
+					padding-left: 20px;
+					@include overTab {
+						padding-left: 40px;
+					}
+					h1 {
+						font-size: 40px;
+					}
+				}
 			}
-		}
-	}
-	.header-nav {
-		margin-left: auto;
-		padding-right: 50px;
-		li {
-			font-family: "Urbanist", sans-serif;
-			display: inline-block;
-			text-align: center;
-			padding-left: 20px;
-		}
-		a:hover {
-			opacity: 0.5;
-		}
-		.header-name {
-			font-size: 12px;
+			.hamburger-menu {
+				.menu-btn {
+					position: fixed;
+					top: 10px;
+					right: 20px;
+					display: flex;
+					height: 50px;
+					width: 50px;
+					justify-content: center;
+					align-items: center;
+					z-index: 90;
+					background-color: #414141;
+					@include overTab {
+						display: none;
+						padding: 0;
+					}
+					span,
+					span:before,
+					span:after {
+						content: "";
+						display: block;
+						height: 3px;
+						width: 25px;
+						border-radius: 3px;
+						background-color: #ffffff;
+						position: absolute;
+					}
+					span:before {
+						bottom: 8px;
+					}
+					span:after {
+						top: 8px;
+					}
+				}
+				#menu-btn-check:checked ~ .menu-btn span {
+					background-color: rgba(255, 255, 255, 0); /*メニューオープン時は真ん中の線を透明にする*/
+				}
+				#menu-btn-check:checked ~ .menu-btn span::before {
+					bottom: 0;
+					transform: rotate(45deg);
+				}
+				#menu-btn-check:checked ~ .menu-btn span::after {
+					top: 0;
+					transform: rotate(-45deg);
+				}
+				#menu-btn-check:checked ~ .header-nav {
+					left: 0; /*メニューを画面内へ*/
+				}
+				#menu-btn-check {
+					display: none;
+				}
+				.header-nav {
+					width: 100%;
+					height: 50%;
+					padding: 100px 10px 0 10px;
+					position: fixed;
+					top: 0;
+					left: 100%;
+					z-index: 80;
+					background-color: grey;
+					transition: all 0.2s;
+					// :hover {
+					// 	opacity: 0.5;
+					// }
+					@include overTab {
+						position: static;
+						padding: 0;
+						left: 0;
+						width: auto;
+					}
+					#menu-btn-check:checked ~ .header-nav {
+						left: 0; /*メニューを画面内へ*/
+					}
+					.header-list {
+						@include overTab {
+							display: flex;
+							justify-content: center;
+							align-items: center;
+						}
+					}
+					ul {
+						padding: 70px 10px 0;
+					}
+					li {
+						border-bottom: solid 1px #ffffff;
+						list-style: none;
+						:hover {
+							opacity: 0.5;
+						}
+						@include overTab {
+							border: none;
+						}
+					}
+					ul,
+					li,
+					a {
+						display: block;
+						width: 100%;
+						box-sizing: border-box;
+						color: #ffffff;
+						text-decoration: none;
+						padding: 9px 15px 10px 5px;
+						position: relative;
+						z-index: 70;
+						@include overTab {
+							color: black;
+							padding: 5px 20px 0 0;
+							box-sizing: content-box;
+							width: auto;
+						}
+					}
+					a::before {
+						content: "";
+						width: 7px;
+						height: 7px;
+						border-top: solid 2px #ffffff;
+						border-right: solid 2px #ffffff;
+						transform: rotate(45deg);
+						position: absolute;
+						right: 11px;
+						top: 16px;
+						@include overTab {
+							border: none;
+							padding: 0;
+						}
+					}
+				}
+			}
 		}
 	}
 }

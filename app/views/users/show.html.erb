@@ -1,6 +1,6 @@
 <div class="cmn users-show">
 	<div class="container">
-		<p>Find me in app/views/users/show.html.erb</p>
+		<p class="url">Find me in app/views/users/show.html.erb</p>
 		<div class="profile">
 			<h2 class="cmn-title"><%= @user.username %> さんのページ</h2>
 			<div class="img-icon">
@@ -35,34 +35,23 @@
 					<%= link_to '●ユーザー情報の編集', edit_user_registration_path(current_user) %>
 				<% end %>
 			</div>
+		</div>
 
-			<div class="posts-list">
-				<h2 class="cmn-title">投稿一覧</h2>
-				<table class="table">
-					<div class="thead-title">
-						<thead>
-							<tr>
-								<th>タイトル</th>
-								<th>内容</th>
-							</tr>
-						</thead>
-					</div>
-					<div class="thead-content">
-						<tbody>
-							<% @posts.each do |post| %>
-								<% if post.present? %>
-									<tr>
-										<th><%= link_to post.title, post_path(post.id) %></th>
-										<th><%= link_to post.content, post_path(post.id) %></th>
-									</tr>
-								<% else %>
-									<P>投稿はありません</p>
-								<% end %>
-							<% end %>
-						</tbody>
-					</div>
-				</table>
-
+		<div class="posts-list">
+			<h2 class="cmn-title"><%= @user.username %> さんの投稿一覧</h2>
+			<div class="index">
+				<% @posts.each do |post| %>
+					<% if post.present? %>
+						<div class="item">
+							<div class="title">
+								<%= link_to post.title, post_path(post.id), class: "title" %>
+							</div>
+							<%= link_to post.content, post_path(post.id) %>
+						</div>
+					<% else %>
+						<P>投稿はありません</p>
+					<% end %>
+				<% end %>
 			</div>
 		</div>
 	</div>

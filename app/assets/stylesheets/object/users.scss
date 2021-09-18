@@ -1,24 +1,49 @@
 .user-index {
-	.thead-content {
-		tr {
-			height: 200px;
+	.user-list {
+		.item {
+			display: flex;
+			margin-bottom: 20px;
 			.img-icon {
-				height: 150px;
-				width: 150px;
+				margin-right: 20px;
+			}
+			.content {
+				padding: 50px 0;
+				flex: 1;
+				.name {
+					margin-bottom: 10px;
+				}
 			}
 		}
 	}
 }
 
 .users-show {
-	.thead-title {
-		font-size: 20px;
+	.img-icon {
+		margin: auto;
+		@include overTab {
+			margin: 0;
+		}
 	}
+	.description {
+		padding-top: 20px;
+	}
+	.posts-list {
+		width: 100%;
+		margin-top: 15px;
+		.item {
+			border-bottom: solid 2px #c0c0c0;
+			margin-bottom: 20px;
+			.title {
+				font-weight: bolder;
+			}
+		}
+	}
+}
 
-	th,
-	td {
-		border: solid 2px; /* 枠線指定 */
-		border-color: lightgrey;
-		padding: 10px; /* 余白指定 */
+.user-edit {
+	.field {
+	}
+	.pass-desc {
+		font-size: 13px;
 	}
 }

@@ -1,19 +1,22 @@
-<div class="cmn posts-show">
+<div class="cmn comment-edit">
     <p>Find me in app/views/comments/edit.html.erb</p>
     <h2 class="cmn-title"><%= @post.title %><span> に対するコメント</span></h2>
     <div class="comment-form">
         <%= form_with model: [@post, @comment], local: true do |f| %>
-                    <%= f.hidden_field :post_id, { value: @post.id} %>
-
+            <%= f.hidden_field :post_id, { value: @post.id} %>
             <div class="com-field">
-                <label>名前</label>
-                <%= f.text_field :name, class: 'com-form' %>
+                <label class="title">名前</label>
+                <div class="content">
+                    <%= f.text_field :name, class: 'com-form' %>
+                </div>
             </div>
             <div class="com-field">
-                <label>コメント</label>
-                <%= f.text_area :content, class: 'com-form' %>
-            </div>
-            <div class="btn-com">
+                <label class="title">コメント</label>
+                <div class="content">
+                    <%= f.text_area :content, class: 'com-form', size: "60x10" %>
+                </div>
+    　       </div>
+            <div class="btn">
                 <%= f.submit "編集する", class: 'btn' %>
             </div>
         <% end %>
